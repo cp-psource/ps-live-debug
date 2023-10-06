@@ -1,10 +1,10 @@
 <?php
 /**
- * PSource Plugin Updater Library 1.10
- * https://n3rds.work/
+ * Plugin Update Checker Library 5.2
+ * http://w-shadow.com/
  *
- * Copyright 2022 DerN3rd
+ * Copyright 2022 Janis Elsts
  * Released under the MIT license. See license.txt for details.
  */
 
-require dirname(__FILE__) . '/load-v4p10.php';
+require dirname(__FILE__) . '/load-v5p2.php';

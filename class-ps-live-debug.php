@@ -33,18 +33,20 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /**************************************************/
 /****************** Plugin Start ******************/
 /**************************************************/
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-live-debug',
+	__FILE__, //Full path to the main plugin file or functions.php.
+	'ps-live-debug'
+);
 
 // Check that the file is not accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Es tut uns leid, aber Du kannst nicht direkt auf diese Datei zugreifen.' );
 }
 
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-live-debug', 
-	__FILE__, 
-	'ps-live-debug' 
-);
 
 /**
  * Define the plugin version for internal use
