@@ -4,8 +4,8 @@
  * Plugin Name:       PS-Debug-Tool
  * Description:       Aktiviert das Debuggen und fügt dem ClassicPress-Admin einen Bildschirm hinzu, um das debug.log anzuzeigen.
  * Version:           1.0.0
- * Author:            DerN3rd (WMS N@W)
- * Author URI:        https://n3rds.work
+ * Author:            PSOURCE
+ * Author URI:        https://github.com/cp-psource
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ps-live-debug
@@ -14,7 +14,7 @@
  */
 
 /*
-Copyright DerN3rd ( WMS N@W )
+Copyright PSOURCE
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -30,23 +30,26 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+ $myUpdateChecker = PucFactory::buildUpdateChecker(
+	 'https://github.com/cp-psource/ps-live-debug',
+	 __FILE__,
+	 'ps-live-debug'
+ );
+ 
+ //Set the branch that contains the stable release.
+ $myUpdateChecker->setBranch('master');
+
 /**************************************************/
 /****************** Plugin Start ******************/
 /**************************************************/
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
-$myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-live-debug',
-	__FILE__, //Full path to the main plugin file or functions.php.
-	'ps-live-debug'
-);
 
 // Check that the file is not accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Es tut uns leid, aber Du kannst nicht direkt auf diese Datei zugreifen.' );
 }
-
 
 /**
  * Define the plugin version for internal use
