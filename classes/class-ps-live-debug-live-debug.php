@@ -303,10 +303,8 @@ if ( ! class_exists( 'PS_Live_Debug_Live_Debug' ) ) {
 
 				foreach ( $editing_wpconfig as $line ) {
 					if ( false !== strpos( $line, 'stop editing!' ) ) {
-						$line  = "define( 'WP_DEBUG', true ); // Added by CP Live Debug" . PHP_EOL;
-						$line .= "/* That's all, stop editing! Happy blogging. */" . PHP_EOL;
+						fputs( $write_wpconfig, "define( 'WP_DEBUG', true ); // Added by CP Live Debug" . PHP_EOL );
 					}
-
 					fputs( $write_wpconfig, $line );
 				}
 			}
